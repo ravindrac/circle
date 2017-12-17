@@ -2,7 +2,7 @@
 
 	<property name = "testdir" location = "test" />
 	<property name = "srcdir" location = "src" />
-	<property name = "builddir" location = "build" />
+	<property name = "builddir" location = "build/classes" />
 	<property name = "full-compile" value = "true" />
    
     <target name="clean">
@@ -14,7 +14,7 @@
         <javac srcdir="src" destdir="build/classes"/>
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="jar" depends="compile, junit">
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/circle.jar" basedir="build/classes">
             <manifest>
@@ -29,7 +29,6 @@
 	
 	<target name="junit" depends="compile">
 		<junit printsummary="on" fork="true" haltonfailure="yes">
-			<classpath refid="junit.class.path" />
 			<classpath>
 			    <pathelement location="C:\_DevOps\JUnit\junit-4.12.jar"/>
 				<pathelement location="C:\_DevOps\JUnit\hamcrest-core-1.3.jar"/>
